@@ -4,7 +4,9 @@
 this repository reads it. Copying it does not enable Constellation, Herdr,
 CUA, or a Deck service.
 
-`null` means the operator must supply a local value later. Do not replace
+`null` leaves a value unresolved. `dataDirectory` will use the operating
+system's per-user Application Support location by default; integration
+connection fields require operator setup before their capability is enabled. Do not replace
 example `null`s with personal paths, live URLs, or secrets in a committed
 file. Secrets are references only: a Keychain or external-store name, never
 the secret material.
@@ -18,7 +20,7 @@ Local overrides belong in gitignored files such as `Config/deck.json` or
 | --- | --- | --- |
 | `schemaVersion` | `deck.config/v1` | Document schema identifier. |
 | `mode` | `fixture` | Example data is fixture-labeled, not a live integration. |
-| `dataDirectory` | `null` | Operator-local durable data path; unset until a runtime exists. |
+| `dataDirectory` | `null` | Use the future runtime's per-user Application Support default. |
 
 ## `constellation`
 
@@ -45,7 +47,7 @@ same worker.
 ## `cua`
 
 CUA owns attached computer capabilities and remains an optional external
-source-available dependency. The Deck MIT license does not relicense CUA.
+integration with both MIT and source-available components. The Deck MIT license does not relicense CUA.
 
 | Field | Example | Meaning |
 | --- | --- | --- |
@@ -54,15 +56,16 @@ source-available dependency. The Deck MIT license does not relicense CUA.
 
 ## `orchestration`
 
-MVP orchestration is external. Automatic continuation stays off so a human
-or external orchestrator gates the next attempt.
+MVP orchestration is external. Automatic continuation starts off. The operator
+can enable bounded continuation for a reviewed goal contract; an external
+orchestrator cannot bypass that authorization by issuing a fresh command.
 
 | Field | Example | Meaning |
 | --- | --- | --- |
 | `mode` | `external` | External orchestrators, not an in-process autopilot. |
-| `automaticContinuation` | `false` | Do not continue a run without a fresh command. |
+| `automaticContinuation` | `false` | Operator must authorize a goal's bounded continuation policy before automatic corrections. |
 | `maxCorrectiveAttempts` | `3` | Cap on corrective loops once a runtime exists. |
-| `maxRunMinutes` | `60` | Wall-clock cap for a single run. |
+| `maxRunMinutes` | `60` | Wall-clock cap for an execution cycle including corrective attempts; correction does not reset it. |
 | `repeatedFailureLimit` | `2` | Stop after this many repeated failures. |
 
 ## `capture`

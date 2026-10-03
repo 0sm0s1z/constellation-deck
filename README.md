@@ -13,7 +13,7 @@ installer here yet. Do not treat this checkout as a runnable product.
 
 | Claim | Truth in this tree |
 | --- | --- |
-| Product specification | Parent-owned documents listed below |
+| Product specification | [MVP PRD](PRD.md), architecture decisions, and delivery milestones |
 | Example configuration | `Config/deck.example.json` (proposed; unused) |
 | Repository verification | `./Scripts/verify.sh` |
 | macOS app / DeckEngine | Not implemented |
@@ -58,6 +58,7 @@ or live endpoints. See [Config/README.md](Config/README.md).
 
 Deck-owned files are MIT licensed. See [LICENSE](LICENSE).
 
-CUA is an optional, external, source-available dependency. The MIT license on
-this repository does not relicense CUA, Herdr, Crew, or other third-party
+CUA is an optional external integration with both MIT and source-available
+components. The MIT license on this repository does not relicense CUA,
+Herdr, Crew, or other third-party
 source, and this bootstrap does not vendor or install them.

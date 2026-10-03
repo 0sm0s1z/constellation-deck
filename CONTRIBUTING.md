@@ -32,9 +32,8 @@ There is no application source to extend yet.
   adapters do not mutate domain storage directly.
 - Secrets belong in Keychain or an external credential store. Configuration
   may carry references only.
-- Parent-owned product documents (`PRD.md`, `Docs/DECISIONS.md`,
-  `Docs/RESEARCH.md`, `programs/mvp/PROGRAM.md`, `AGENTS.md`) are edited by
-  the product owners of those files.
+- Changes to product scope or architecture must update the relevant PRD
+  requirements and decisions, with their validation impact explained in the PR.
 
 ## Pull requests
 

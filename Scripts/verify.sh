@@ -46,16 +46,6 @@ require_file() {
   fi
 }
 
-parent_file() {
-  if [ ! -f "$1" ]; then
-    warn "$1 is not present yet (parent-owned; not blocking)"
-  elif [ ! -s "$1" ]; then
-    warn "$1 exists but is empty (parent-owned; not blocking)"
-  else
-    ok "$1"
-  fi
-}
-
 CONFIG="Config/deck.example.json"
 
 jq_raw() {
@@ -106,12 +96,12 @@ require_file ".github/ISSUE_TEMPLATE/bug_report.yml"
 require_file ".github/ISSUE_TEMPLATE/feature_request.yml"
 require_file ".github/pull_request_template.md"
 
-section "Parent specification files"
-parent_file "PRD.md"
-parent_file "Docs/DECISIONS.md"
-parent_file "Docs/RESEARCH.md"
-parent_file "programs/mvp/PROGRAM.md"
-parent_file "AGENTS.md"
+section "Product specification files"
+require_file "PRD.md"
+require_file "Docs/DECISIONS.md"
+require_file "Docs/RESEARCH.md"
+require_file "programs/mvp/PROGRAM.md"
+require_file "AGENTS.md"
 
 section "Example configuration"
 if jq empty "$CONFIG" >/dev/null 2>&1; then
@@ -121,7 +111,11 @@ else
 fi
 
 expect "required top-level keys" \
-  '. as $doc | ["schemaVersion","mode","dataDirectory","constellation","herdr","cua","orchestration","capture","service"] | all(in($doc)) | tostring' \
+  '(keys == (["schemaVersion","mode","dataDirectory","constellation","herdr","cua","orchestration","capture","service"] | sort)) | tostring' \
+  "true"
+
+expect "exact nested keys (no embedded secret fields)" \
+  '((.constellation | keys) == (["enabled","baseURL","credentialReference","modelPolicy"] | sort) and (.herdr | keys) == (["enabled","socketPath"] | sort) and (.cua | keys) == (["enabled","connectionReference"] | sort) and (.orchestration | keys) == (["mode","automaticContinuation","maxCorrectiveAttempts","maxRunMinutes","repeatedFailureLimit"] | sort) and (.capture | keys) == (["continuousRecording","artifactRetentionDays"] | sort) and (.service | keys) == (["transport","remoteAccess"] | sort)) | tostring' \
   "true"
 
 expect_type ".schemaVersion" "string"
