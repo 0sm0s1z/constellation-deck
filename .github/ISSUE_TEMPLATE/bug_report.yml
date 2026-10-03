@@ -1,0 +1,41 @@
+name: Bug report
+description: Report a defect with reproduction evidence.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Do not upload credentials, tokens, Keychain material, session
+        transcripts, private source, live endpoint inventories, or
+        screenshots that show secrets.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened, and where?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected
+      description: What should have happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: >
+        Commands, redacted output, fixture identifiers, or revision.
+        Summaries are not proof. Label fixture or simulated material.
+        Never describe a simulated run as a live integration.
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Revision or milestone
+      placeholder: M0 / commit SHA
+    validations:
+      required: true

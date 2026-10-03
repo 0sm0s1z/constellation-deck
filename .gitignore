@@ -1,0 +1,46 @@
+# SwiftPM and Xcode
+.build/
+.swiftpm/
+DerivedData/
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+*.xcuserstate
+*.moved-aside
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.mobileprovision
+*.csr
+
+# Local Deck configuration (keep the public example)
+Config/deck.json
+Config/deck.local.json
+Config/*.local.json
+!Config/deck.example.json
+
+# Runtime artifacts
+*.log
+*.sqlite
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+artifacts/
+recordings/
+captures/
+sessions/
+transcripts/
+screenshots/
+agent-memory/
+
+# OS and editor debris
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~

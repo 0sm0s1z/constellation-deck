@@ -1,0 +1,39 @@
+name: Feature request
+description: Propose a change with acceptance evidence.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        Do not include credentials, private hosts, or vendor source.
+        Tie the request to a PRD requirement or decision when one exists.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What operator or orchestrator job is missing?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: What should Deck do, and what must it not own?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance evidence
+      description: >
+        Observable checks that would prove the change. Summaries are
+        not proof. Say how fixture versus live would be distinguished.
+    validations:
+      required: true
+  - type: input
+    id: contract
+    attributes:
+      label: Related requirement or decision
+      placeholder: PRD item, Docs/DECISIONS.md entry, or none yet
+    validations:
+      required: false

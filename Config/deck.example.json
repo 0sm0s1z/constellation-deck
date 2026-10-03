@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "deck.config/v1",
+  "mode": "fixture",
+  "dataDirectory": null,
+  "constellation": {
+    "enabled": false,
+    "baseURL": null,
+    "credentialReference": null,
+    "modelPolicy": "router-default"
+  },
+  "herdr": {
+    "enabled": false,
+    "socketPath": null
+  },
+  "cua": {
+    "enabled": false,
+    "connectionReference": null
+  },
+  "orchestration": {
+    "mode": "external",
+    "automaticContinuation": false,
+    "maxCorrectiveAttempts": 3,
+    "maxRunMinutes": 60,
+    "repeatedFailureLimit": 2
+  },
+  "capture": {
+    "continuousRecording": false,
+    "artifactRetentionDays": 30
+  },
+  "service": {
+    "transport": "unix",
+    "remoteAccess": false
+  }
+}
