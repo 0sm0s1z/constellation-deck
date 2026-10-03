@@ -20,7 +20,7 @@ Current validation: `./Scripts/verify.sh` for required files, public example con
 
 | Milestone | Status | Evidence / next gate |
 | --- | --- | --- |
-| M0 — Repository and specification | Local verification passed; Git publication and remote CI pending | PRD, configuration, MIT license, initial ADRs, research, and CI |
+| M0 — Repository and specification | Complete | Public MIT repository; local validation and published specification CI passed; evidence below |
 | M1 — Integration qualification | Not started | External bot wakeup, real Herdr/CUA control, licensing, service packaging |
 | M2 — Visible native prototype | Not started | Fresh native window, explicitly labeled synthetic project, navigation and evidence |
 | M3 — Live project loop | Not started | Real external orchestrator and Herdr, durable receipts, local/remote identities |
@@ -28,6 +28,16 @@ Current validation: `./Scripts/verify.sh` for required files, public example con
 | M5 — MVP acceptance | Not started | Full release scenario, independent review, pilot report |
 
 GitHub Actions on the exact commit is the authority for remote M0 checks. This document deliberately does not infer an app build or live integration from documentation CI.
+
+### M0 evidence — October 3, 2026
+
+- Public repository: [0sm0s1z/constellation-deck](https://github.com/0sm0s1z/constellation-deck).
+- Published specification and stricter verifier: commit `05fbbc4dd31aa36ba973e2505872b328ad048d4b`.
+- [GitHub verification run 37157719489](https://github.com/0sm0s1z/constellation-deck/actions/runs/37157719489) completed successfully for that commit.
+- Local `./Scripts/verify.sh` passed. Thirteen local Markdown references resolved, 59 requirement IDs were unique, and 20 acceptance scenarios were specified.
+- Independent read-only Grok review inspected the PRD, architecture/status documents, config, verifier, workflow, templates, and Git state. Parent resolved publication-status ambiguity and added S02's explicit continuation-authorization precondition before publication.
+- Reviewed and corrected the bootstrap's temporary missing-document warnings into required-file failures; example configuration rejects unexpected keys. No third-party implementation was copied and no real credentials/endpoints or runtime artifacts were included.
+- App build, native UI, service installation, live adapters, and pilot are not implemented or verified. They remain M1–M5 gates.
 
 ## First bounded implementation handoff: M1
 

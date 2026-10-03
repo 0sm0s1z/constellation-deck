@@ -2,8 +2,8 @@
 
 ## Reporting
 
-Report vulnerabilities privately to the repository maintainers through the
-host's private advisory or security-contact channel. Do not open a public
+Report vulnerabilities through [GitHub's private vulnerability reporting](https://github.com/0sm0s1z/constellation-deck/security/advisories/new).
+Do not open a public
 issue, pull request, or discussion that includes exploit details, secrets,
 or access paths.
 
